@@ -1,0 +1,24 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+  <div class="mb-3">
+    <label class="form-label" for="nombre">Nombre</label>
+    <input
+      class="form-control"
+      type="text"
+      formControlName="nombre"
+      id="nombre"
+      ngbTooltip="Entre 3 y 10 caracteres"
+    />
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="nivel">nivel</label>
+    <input
+      class="form-control"
+      type="number"
+      formControlName="nivel"
+      id="nivel"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+    Nueva skill
+  </button>
+</form>
