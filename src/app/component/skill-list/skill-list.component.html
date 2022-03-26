@@ -4,4 +4,9 @@
   *ngIf="mostrarForm"
   (nuevaSkill)="crearNuevaSkill($event)"
 ></app-form-skill>
-<app-skill *ngFor="let skill of skills" [skill]="skill"></app-skill>
+<app-skill
+  *ngFor="let skill of skills"
+  [skill]="skill"
+  (borrarS)="borrarSkill($event)"
+  (editarS)="editarSkill($event)"
+></app-skill>

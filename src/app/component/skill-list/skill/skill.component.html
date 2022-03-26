@@ -1,1 +1,5 @@
-<p>{{ skill.id }} {{ skill.nombre }} {{ skill.nivel }}</p>
+<p>
+  {{ skill.id }} {{ skill.nombre }} {{ skill.nivel }}
+  <button (click)="editarSkill()"><i class="bi bi-pencil-fill"></i></button>
+  <button (click)="borrarSkill()"><i class="bi bi-x-circle-fill"></i></button>
+</p>
