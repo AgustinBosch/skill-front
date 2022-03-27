@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   Input,
   OnInit,
@@ -18,17 +19,13 @@ export class SkillListComponent {
   @ViewChild("formSkill") formSkill!: FormSkillComponent;
   @Input() skills: Skill[] = [];
 
-  mostrarForm: boolean = false;
-
   constructor(private skillSevice: SkillService) {}
-
-  toggleForm() {
-    this.mostrarForm = !this.mostrarForm;
-  }
 
   crearNuevaSkill(skill: Skill) {
     if (skill.id) {
-      //edit
+      this.skillSevice.editarSkill(skill).subscribe((skillEditada) => {
+        this.actualizarPrimeraSkill(skillEditada);
+      });
     } else {
       this.skillSevice
         .nuevaSkill(skill)
@@ -42,8 +39,20 @@ export class SkillListComponent {
     });
   }
 
+  private actualizarPrimeraSkill(skill: Skill) {
+    for (let index = 0; index < this.skills.length; index++) {
+      if (this.skills[index].id === skill.id) {
+        this.skills[index] = skill;
+        break;
+      }
+    }
+  }
+
+  toggleForm() {
+    this.formSkill.toggleForm();
+  }
+
   editarSkill(skill: Skill) {
-    this.toggleForm();
-    //this.formSkill.funcion();
+    this.formSkill.setSkill(skill);
   }
 }
