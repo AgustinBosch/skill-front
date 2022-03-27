@@ -1,4 +1,9 @@
-<form #formSkill [formGroup]="form" (ngSubmit)="onSubmit($event)">
+<form
+  #formSkill
+  [formGroup]="form"
+  (ngSubmit)="onSubmit($event)"
+  *ngIf="mostrarForm"
+>
   <div class="mb-3">
     <label class="form-label" for="nombre">Nombre</label>
     <input

@@ -1,7 +1,7 @@
 <h2>Mis skills son</h2>
 <button class="btn btn-primary" (click)="toggleForm()">nueva skill</button>
 <app-form-skill
-  *ngIf="mostrarForm"
+  #formSkill
   (nuevaSkill)="crearNuevaSkill($event)"
 ></app-form-skill>
 <app-skill

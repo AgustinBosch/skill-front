@@ -7,14 +7,15 @@ import { Skill } from "src/app/model/skill.model";
   templateUrl: "./form-skill.component.html",
   styleUrls: ["./form-skill.component.css"],
 })
-export class FormSkillComponent implements OnInit {
-  skill?: Skill;
+export class FormSkillComponent {
+  mostrarForm: boolean = false;
   @Output() nuevaSkill: EventEmitter<Skill> = new EventEmitter();
 
   form: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
+      id: [0],
       nombre: [
         "",
         [
@@ -27,10 +28,17 @@ export class FormSkillComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  setSkill(skill: Skill) {
+    this.form.patchValue({
+      id: skill.id,
+      nombre: skill.nombre,
+      nivel: skill.nivel,
+    });
+    this.mostrarForm = true;
+  }
 
-  funcion() {
-    console.log("funciono");
+  toggleForm() {
+    this.mostrarForm = !this.mostrarForm;
   }
 
   onSubmit(event: Event) {
@@ -38,6 +46,7 @@ export class FormSkillComponent implements OnInit {
     if (this.form.valid) {
       this.nuevaSkill.emit(this.form.value);
       this.form.reset();
+      this.mostrarForm = false;
     } else {
       console.log("form no valido");
     }
