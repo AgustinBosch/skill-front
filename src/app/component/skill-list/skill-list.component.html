@@ -1,12 +1,12 @@
-<h2>Mis skills son</h2>
-<button class="btn btn-primary" (click)="toggleForm()">nueva skill</button>
+<h2 class="m-3">Mis skills son:</h2>
 <app-form-skill
-  #formSkill
-  (nuevaSkill)="crearNuevaSkill($event)"
+	class="formulario"
+	#formSkill
+	(nuevaSkill)="crearNuevaSkill($event)"
 ></app-form-skill>
 <app-skill
-  *ngFor="let skill of skills"
-  [skill]="skill"
-  (borrarS)="borrarSkill($event)"
-  (editarS)="editarSkill($event)"
+	*ngFor="let skill of skills"
+	[skill]="skill"
+	(borrarS)="borrarSkill($event)"
+	(editarS)="editarSkill($event)"
 ></app-skill>

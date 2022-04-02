@@ -1,0 +1,13 @@
+/* center box with border */
+.box {
+  width: 50%;
+  height: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
+  margin: 3px auto;
+  padding: 10px;
+}
+h1{
+  text-align: center;
+}

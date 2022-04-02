@@ -1,5 +1,12 @@
-<p>
-  {{ skill.id }} {{ skill.nombre }} {{ skill.nivel }}
-  <button (click)="editarSkill()"><i class="bi bi-pencil-fill"></i></button>
-  <button (click)="borrarSkill()"><i class="bi bi-x-circle-fill"></i></button>
-</p>
+<div class="skill">
+	<p class="parrafo">
+		<b>Nombre:</b> {{ skill.nombre }} <br />
+		<b>Nivel:</b> {{ skill.nivel }}
+	</p>
+	<button (click)="editarSkill()" class="btn btn-success boton">
+		<i class="bi bi-pencil-fill"></i>
+	</button>
+	<button (click)="borrarSkill()" class="btn btn-danger boton">
+		<i class="bi bi-x-circle-fill"></i>
+	</button>
+</div>

@@ -1,29 +1,45 @@
-<form
-  #formSkill
-  [formGroup]="form"
-  (ngSubmit)="onSubmit($event)"
-  *ngIf="mostrarForm"
+<button
+	[ngClass]="{
+		btn: true,
+		'btn-right': true,
+		'btn-success': !mostrarForm,
+		'btn-danger': mostrarForm
+	}"
+	class="btn btn-primary"
+	(click)="toggleForm()"
 >
-  <div class="mb-3">
-    <label class="form-label" for="nombre">Nombre</label>
-    <input
-      class="form-control"
-      type="text"
-      formControlName="nombre"
-      id="nombre"
-      ngbTooltip="Entre 3 y 10 caracteres"
-    />
-  </div>
-  <div class="mb-3">
-    <label class="form-label" for="nivel">nivel</label>
-    <input
-      class="form-control"
-      type="number"
-      formControlName="nivel"
-      id="nivel"
-    />
-  </div>
-  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
-    Nueva skill
-  </button>
+	{{ mostrarForm ? "Cancelar" : "+ Skill" }}
+</button>
+<form
+	#formSkill
+	[formGroup]="form"
+	(ngSubmit)="onSubmit($event)"
+	*ngIf="mostrarForm"
+	class="m-3 mt-5"
+>
+	<div class="mb-3">
+		<label class="form-label" for="nombre">Nombre:</label>
+		<input
+			class="form-control"
+			type="text"
+			formControlName="nombre"
+			id="nombre"
+			placeholder="Nombre de la skill"
+			ngbTooltip="Entre 3 y 10 caracteres"
+		/>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" for="nivel">Nivel:</label>
+		<input
+			class="form-control"
+			type="number"
+			formControlName="nivel"
+			id="nivel"
+			placeholder="Nivel de la skill"
+			ngbTooltip="Valor entre 1 y 10"
+		/>
+	</div>
+	<button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+		Nueva skill
+	</button>
 </form>
